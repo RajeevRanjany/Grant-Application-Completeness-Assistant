@@ -106,7 +106,7 @@ Configuration is driven through Spring Boot's `application.yml`, which reads val
 |---|---|---|
 | `DATABASE_URL` | JDBC URL | H2 file DB |
 | `DB_USERNAME` / `DB_PASSWORD` / `DB_DRIVER` | DB credentials/driver | H2 defaults |
-| `LLM_PROVIDER` | `openai_compat` or `mock` | depends on active Spring profile |
+| `LLM_PROVIDER` | `openai_compat` | depends on active Spring profile |
 | `LLM_BASE_URL` | LLM API base URL | — |
 | `LLM_API_KEY` | LLM API key | — |
 | `LLM_MODEL` | Model name | — |
@@ -133,8 +133,7 @@ project/
 │   │   │   │   └── service/        
 │   │   │   └── resources/
 │   │   │       ├── application.yml
-│   │   │       └── db/migration/   
-│   │   └── test/                   
+│   │   │       └── db/migration/                   
 │   └── pom.xml
 │
 ├── frontend/
@@ -143,9 +142,7 @@ project/
 │   │   ├── components/             
 │   │   ├── tests/                  
 │   │   ├── App.jsx
-│   │   └── main.jsx
-│   ├── Dockerfile
-│   ├── nginx.conf                  
+│   │   └── main.jsx                
 │   ├── vite.config.js
 │   └── package.json
 │
@@ -164,7 +161,11 @@ project/
 7. **View the deterministic completeness summary** — totals by status plus a completion percentage, recomputed from the latest mapping/review state.
 
 ## Screenshots:-
-![Screenshot 2026-10-05 at 2.36.51 AM.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2Fkh%2Fbk7tfj9935vfg_p4223r8rgc0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_B9oT47%2FScreenshot%202026-10-05%20at%202.36.51%E2%80%AFAM.png)
+<img width="1688" height="946" alt="Screenshot 2026-10-05 at 2 46 37 AM" src="https://github.com/user-attachments/assets/acc952c3-c374-4116-ac5f-9145cf952794" />
+<img width="1225" height="946" alt="Screenshot 2026-10-05 at 2 47 00 AM" src="https://github.com/user-attachments/assets/2f0ac4f0-010a-4ec0-ba79-e980efaea034" />
+<img width="1017" height="769" alt="Screenshot 2026-10-05 at 2 47 13 AM" src="https://github.com/user-attachments/assets/d20e458b-c42a-4a38-9a1d-d6933d061042" />
+
+
 
 
 ## 8. Author:-
