@@ -165,8 +165,7 @@ project/
 
 ## Screenshots:-
 ![Screenshot 2026-10-05 at 2.36.51 AM.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2Fkh%2Fbk7tfj9935vfg_p4223r8rgc0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_B9oT47%2FScreenshot%202026-10-05%20at%202.36.51%E2%80%AFAM.png)
-![Screenshot 2026-10-05 at 2.37.10 AM.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2Fkh%2Fbk7tfj9935vfg_p4223r8rgc0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_3NKTWt%2FScreenshot%202026-10-05%20at%202.37.10%E2%80%AFAM.png)
-![Screenshot 2026-10-05 at 2.37.41 AM.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2Fkh%2Fbk7tfj9935vfg_p4223r8rgc0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_yrd8Fz%2FScreenshot%202026-10-05%20at%202.37.41%E2%80%AFAM.png)
+
 
 ## 8. Author:-
 **Rajeev Ranjan | NIT ALLAHABAD **
