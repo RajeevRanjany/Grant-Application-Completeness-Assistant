@@ -2,13 +2,15 @@
 
 ## 1. What is this project?
 
-A web application that helps reviewers check a draft grant application against a funder's guideline document. The user uploads two PDFs — the grant guideline and the draft application — and the system uses an LLM-driven workflow to extract requirements from the guideline, map evidence from the application to each requirement, and summarise what is satisfied, weak, ambiguous, or missing.
+A web application that helps reviewers check a draft grant application against a funder's guideline document. The user uploads two PDFs — the grant gu
+
+ideline and the draft application — and the system uses an LLM-driven workflow to extract requirements from the guideline, map evidence from the application to each requirement, and summarise what is satisfied, weak, ambiguous, or missing.
 
 Every extracted requirement and every mapped piece of evidence carries a verbatim excerpt and the page it came from. The reviewer can confirm, correct, or reject each AI mapping; those decisions feed into a deterministic checklist-completion summary computed in the backend (not by the LLM). The application also tracks expected supporting documents separately, so reviewers can mark proof-of-registration, letters, etc. as received or missing.
 
 The tool is positioned as an assistant for completeness review only — it does not make funding-eligibility decisions.
 
-## 2. Features
+## 2. Features:-
 
 - PDF ingestion with per-page text extraction (PDFBox)
 - LLM-driven requirement extraction (mandatory vs recommendation)
@@ -25,9 +27,9 @@ The tool is positioned as an assistant for completeness review only — it does 
 - LLM provider abstraction: OpenAI-compatible API or deterministic mock
 - Structured application logs; API keys are never logged
 
-## 3. Tech Stack
+## 3. Tech Stack:-
 
-**Backend**
+**Backend:-**
 - Java 21
 - Spring Boot 3.3.5 (Web, Data JPA)
 - Maven
@@ -35,15 +37,14 @@ The tool is positioned as an assistant for completeness review only — it does 
 - Flyway for schema migrations
 - Apache PDFBox 3.0.3
 - Jackson
-
-**Frontend**
+**Frontend:-**
 - React 19
 - Vite 8
 - Plain JavaScript (no TypeScript)
 - Vitest + Testing Library + jsdom
 - nginx (production container)
 
-**AI**
+**AI:-**
 - OpenAI-compatible provider abstraction (works with DeepSeek, Groq, etc.)
 - Built-in deterministic `mock` provider for development
 
@@ -54,17 +55,17 @@ The tool is positioned as an assistant for completeness review only — it does 
 - Java 21+
 - Maven 3.9+
 - Node.js 22+
-- (Optional) PostgreSQL 16+ if you want to run against Postgres instead of the default H2 file DB
-- (Optional) An API key for an OpenAI-compatible LLM provider
+- PostgreSQL
+- An API key for an OpenAI-compatible LLM provider
 
-### Clone
+### How to Clone:-
 
 ```bash
-git clone <repository-url>
-cd <project-directory>
+git clone https://github.com/RajeevRanjany/Grant-Application-Completeness-Assistant
+cd Grant-Application-Completeness-Assistant
 ```
 
-### Backend
+### Backend:-
 
 ```bash
 cd backend
@@ -75,7 +76,7 @@ The backend starts on `http://localhost:8080`. On first run, Flyway applies all 
 
 Health check: `GET http://localhost:8080/health`.
 
-### Frontend
+### Frontend:-
 
 ```bash
 cd frontend
@@ -85,7 +86,7 @@ npm run dev
 
 The Vite dev server starts (default `http://localhost:5173`) and proxies `/api/*` requests to the backend on port 8080.
 
-### Database
+### Database:-
 
 - **Default (no setup needed):** H2 file database at `backend/dev.mv.db`. Flyway migrations run automatically on startup.
 - **PostgreSQL (optional):** set the environment variables below before starting the backend. Flyway will migrate the Postgres schema automatically.
@@ -93,11 +94,11 @@ The Vite dev server starts (default `http://localhost:5173`) and proxies `/api/*
 ```bash
 export DATABASE_URL=jdbc:postgresql://localhost:5432/grant_assistant
 export DB_USERNAME=grant
-export DB_PASSWORD=<your-password>
+export DB_PASSWORD=your_database_password
 export DB_DRIVER=org.postgresql.Driver
 ```
 
-### Environment Variables
+### Environment Variables:-
 
 Configuration is driven through Spring Boot's `application.yml`, which reads values from environment variables with sensible defaults for local development.
 
@@ -114,7 +115,7 @@ Configuration is driven through Spring Boot's `application.yml`, which reads val
 
 For local development, create a `.env.example` file with placeholder names (no secrets) and share your real values privately. The `.env` file itself must never be committed. API keys, DB passwords, and tokens must only come from environment variables.
 
-## 5. Project Structure
+## 5. Project Structure:-
 
 ```
 project/
@@ -122,38 +123,37 @@ project/
 │   ├── src/
 │   │   ├── main/
 │   │   │   ├── java/com/grant/assistant/
-│   │   │   │   ├── config/         # Spring configuration
-│   │   │   │   ├── controller/     # REST endpoints
-│   │   │   │   ├── dto/            # request/response DTOs
-│   │   │   │   ├── exception/      # error handlers
-│   │   │   │   ├── model/          # JPA entities
-│   │   │   │   ├── processing/     # PDF extraction
-│   │   │   │   ├── repository/     # Spring Data repositories
-│   │   │   │   └── service/        # business + AI workflow
+│   │   │   │   ├── config/         
+│   │   │   │   ├── controller/     
+│   │   │   │   ├── dto/            
+│   │   │   │   ├── exception/      
+│   │   │   │   ├── model/          
+│   │   │   │   ├── processing/     
+│   │   │   │   ├── repository/     
+│   │   │   │   └── service/        
 │   │   │   └── resources/
 │   │   │       ├── application.yml
-│   │   │       └── db/migration/   # Flyway migrations (V1, V2)
-│   │   └── test/                   # (placeholder — no backend tests yet)
-│   ├── Dockerfile
+│   │   │       └── db/migration/   
+│   │   └── test/                   
 │   └── pom.xml
 │
 ├── frontend/
 │   ├── src/
-│   │   ├── api/                    # fetch client
-│   │   ├── components/             # React components
-│   │   ├── tests/                  # Vitest tests
+│   │   ├── api/                   
+│   │   ├── components/             
+│   │   ├── tests/                  
 │   │   ├── App.jsx
 │   │   └── main.jsx
 │   ├── Dockerfile
-│   ├── nginx.conf                  # production proxy to backend
+│   ├── nginx.conf                  
 │   ├── vite.config.js
 │   └── package.json
 │
-├── uploads/                        # local PDF storage (gitignored)
+├── uploads/                        
 └── README.md
 ```
 
-## 6. Application Flow
+## 6. Application Flow:-
 
 1. **Upload grant guideline** PDF.
 2. **Upload application draft** PDF.
@@ -163,61 +163,10 @@ project/
 6. **Track supporting documents** — add expected documents (e.g. registration certificate, authorised-rep letter) and mark each as received.
 7. **View the deterministic completeness summary** — totals by status plus a completion percentage, recomputed from the latest mapping/review state.
 
-## 7. Testing
+## Screenshots:-
+![Screenshot 2026-10-05 at 2.36.51 AM.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2Fkh%2Fbk7tfj9935vfg_p4223r8rgc0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_B9oT47%2FScreenshot%202026-10-05%20at%202.36.51%E2%80%AFAM.png)
+![Screenshot 2026-10-05 at 2.37.10 AM.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2Fkh%2Fbk7tfj9935vfg_p4223r8rgc0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_3NKTWt%2FScreenshot%202026-10-05%20at%202.37.10%E2%80%AFAM.png)
+![Screenshot 2026-10-05 at 2.37.41 AM.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2Fkh%2Fbk7tfj9935vfg_p4223r8rgc0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_yrd8Fz%2FScreenshot%202026-10-05%20at%202.37.41%E2%80%AFAM.png)
 
-**Frontend** — 26 tests, all passing (verified).
-
-```bash
-cd frontend
-npm test
-```
-
-**Backend** — no automated tests are present in `backend/src/test/` yet. Running `mvn test` succeeds with "no tests to run". End-to-end verification has been done manually by uploading the sample PDFs and inspecting the full pipeline via the REST API.
-
-## 8. Docker / Deployment
-
-The repository contains standalone `Dockerfile`s for the backend and the frontend but **no `docker-compose.yml`**. Each image is built and run independently.
-
-**Build and run the backend image:**
-
-```bash
-cd backend
-docker build -t grant-backend .
-docker run -p 8080:8080 \
-  -e DATABASE_URL=... \
-  -e LLM_PROVIDER=... \
-  -e LLM_API_KEY=... \
-  grant-backend
-```
-
-**Build and run the frontend image (nginx on port 80):**
-
-```bash
-cd frontend
-docker build -t grant-frontend .
-docker run -p 3000:80 grant-frontend
-```
-
-The frontend's `nginx.conf` proxies `/api/*` requests to a backend hostname — adjust it for your deployment environment.
-
-No public hosted deployment URL is configured in this repository.
-
-## 9. Configuration / Security
-
-- All credentials (DB password, LLM API key) are read from **environment variables** via `application.yml`.
-- Never commit `.env` files, API keys, DB passwords, or any other secrets.
-- Share only a `.env.example` file containing variable **names** (no values) as a reference.
-- API keys are not written to application logs.
-
-## 10. Limitations
-
-- No automated backend tests yet; frontend has unit tests for components and API client only.
-- No OCR — scanned/image-only PDFs will produce empty extracted text.
-- No `docker-compose.yml`; backend and frontend images must be orchestrated manually.
-- Single-user application; no authentication or multi-tenant isolation.
-- No file-content check for supporting documents — reviewers mark them as received manually.
-- Supporting-document tracking is per-assessment; it is not pre-populated from the requirement list.
-
----
-
-**Rajeev Ranjan | NIT ALLAHABAD**
+## 8. Author:-
+**Rajeev Ranjan | NIT ALLAHABAD **
