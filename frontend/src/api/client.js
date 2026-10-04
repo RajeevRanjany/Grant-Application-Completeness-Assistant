@@ -6,10 +6,12 @@ export class ApiError extends Error {
   }
 }
 
+const API_BASE = import.meta.env.VITE_API_URL ?? "/api";
+
 async function request(path, options) {
   let res;
   try {
-    res = await fetch(`/api${path}`, options);
+    res = await fetch(`${API_BASE}${path}`, options);
   } catch {
     throw new ApiError(0, "Network error — is the backend running?");
   }
@@ -87,7 +89,7 @@ export const api = {
     }),
 
   deleteSupportingDocument: async (docId) => {
-    const res = await fetch(`/api/v1/supporting-documents/${docId}`, { method: "DELETE" });
+    const res = await fetch(`${API_BASE}/v1/supporting-documents/${docId}`, { method: "DELETE" });
     if (!res.ok) throw new ApiError(res.status, res.statusText);
   },
 };

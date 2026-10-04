@@ -35,7 +35,7 @@ app:
     model: ${LLM_MODEL:}
 
 server:
-  port: 8080
+  port: ${PORT:8080}
   error:
     include-message: always
 
@@ -57,7 +57,8 @@ spring:
 
 app:
   llm:
-    provider: openai_compat
-    base-url: https://api.deepseek.com
-    api-key: sk-487bf45d544e4059a5c52783fea7c171
-    model: deepseek-chat
+    provider: ${LLM_PROVIDER:mock}
+    base-url: ${LLM_BASE_URL:}
+    api-key: ${LLM_API_KEY:}
+    model: ${LLM_MODEL:}
+
