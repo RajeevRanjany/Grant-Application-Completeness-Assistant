@@ -1,0 +1,46 @@
+# ─── OS ────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ─── Secrets / env ─────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ─── IDE / Editor ──────────────────────────────────────────────
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+.claude/
+
+# ─── Java / Spring Boot / Maven ────────────────────────────────
+target/
+*.class
+*.jar
+*.war
+*.log
+hs_err_pid*
+replay_pid*
+
+# ─── H2 local database files ───────────────────────────────────
+*.mv.db
+*.trace.db
+
+# ─── Node / Frontend ───────────────────────────────────────────
+node_modules/
+dist/
+build/
+.pnpm-store/
+.vite/
+coverage/
+
+# ─── Local uploads (runtime) ───────────────────────────────────
+uploads/*
+!uploads/.gitkeep
+
+# ─── Private assignment / internal notes ───────────────────────
+problemstatement.txt
+problem.txt
+AiMix/
